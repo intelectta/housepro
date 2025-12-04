@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MiniFábrica Doméstica — Bread Machine Rental</title>
+
+<style>
+/* =================== GLOBAL =================== */
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    color: #333;
+
+    /* GRADIENTE TRIGO + MADEIRA */
+    background: linear-gradient(
+        135deg,
+        #f3e6c6 0%,
+        #f5deb3 25%,
+        #d2b48c 60%,
+        #c9a26a 100%
+    );
+    background-attachment: fixed;
+}
+
+
+h1, h2 {
+    letter-spacing: 0.5px;
+}
+
+/* =================== HEADER =================== */
+header {
+    background: linear-gradient(135deg, #1e3c72, #2a5298);
+    color: white;
+    padding: 40px 20px;
+    text-align: center;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+}
+
+/* =================== SECTIONS =================== */
+section {
+    max-width: 950px;
+    margin: 40px auto;
+    padding: 30px 30px;
+    border-radius: 18px;
+    background: rgba(255,255,255,0.75);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 6px 25px rgba(0,0,0,0.12);
+}
+
+ul li {
+    margin-bottom: 10px;
+}
+
+/* =================== BUTTON =================== */
+.button {
+    display: inline-block;
+    padding: 12px 26px;
+    background: linear-gradient(135deg, #1d976c, #93f9b9);
+    color: #fff;
+    font-weight: bold;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: 0.3s;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+.button:hover {
+    opacity: 0.85;
+    transform: translateY(-2px);
+}
+
+/* =================== PREÇOS EM CARTÕES =================== */
+.price-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 25px;
+}
+
+.price-card {
+    background: white;
+    width: 260px;
+    padding: 25px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.12);
+    transition: 0.3s;
+}
+.price-card:hover {
+    transform: translateY(-5px);
+}
+
+.price-card h3 {
+    margin-top: 0;
+    color: #1e3c72;
+}
+
+.price-value {
+    font-size: 28px;
+    margin: 10px 0;
+    color: #1d976c;
+    font-weight: bold;
+}
+
+/* =================== FORM =================== */
+input, textarea, select {
+    width: 100%;
+    padding: 12px;
+    margin-top: 10px;
+    border-radius: 10px;
+    border: 1px solid #bbb;
+    background: #f8f9fa;
+    box-sizing: border-box;
+    font-size: 15px;
+}
+
+/* =================== CALENDÁRIO =================== */
+#calendar {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 25px;
+}
+
+.day {
+    width: 70px;
+    height: 70px;
+    background: rgba(255,255,255,0.8);
+    backdrop-filter: blur(6px);
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-weight: bold;
+    color: #333;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    transition: 0.25s;
+}
+
+.day:hover {
+    background: #d8ecff;
+}
+
+.reserved {
+    background: #ffb3b3 !important;
+    color: #900;
+    cursor: not-allowed;
+}
+
+.selected {
+    background: #b6f7c1 !important;
+    border: 2px solid #1d976c;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>MiniFábrica Doméstica — Aluguel de Máquinas de Pão</h1>
+</header>
+
+<section id="about">
+    <h2>O que é a MiniFábrica?</h2>
+    <p>
+        Um sistema profissional de aluguel de máquinas de pão voltado para diaristas,
+        empreendedoras e famílias que buscam renda extra.  
+        O site fornece segurança, transparência e reservas estilo hotel.
+    </p>
+</section>
+
+<section id="how">
+    <h2>Como Funciona</h2>
+    <ul>
+        <li>Faça sua inscrição com 2 referências</li>
+        <li>Aguarde a aprovação do cadastro</li>
+        <li>Acesse o calendário e selecione datas disponíveis</li>
+        <li>Retire a máquina e comece sua MiniFábrica</li>
+    </ul>
+</section>
+
+<section id="prices">
+    <h2>Tabela de Preços (USD)</h2>
+
+    <div class="price-cards">
+
+        <div class="price-card">
+            <h3>Pequena</h3>
+            <p>500 g — 15 dias</p>
+            <p class="price-value">$40–60</p>
+        </div>
+
+        <div class="price-card">
+            <h3>Média</h3>
+            <p>1 kg — 30 dias</p>
+            <p class="price-value">$80–120</p>
+        </div>
+
+        <div class="price-card">
+            <h3>Grande</h3>
+            <p>1,5–1,9 L — 2–3 meses</p>
+            <p class="price-value">$150–250/mês</p>
+        </div>
+
+    </div>
+</section>
+
+<section id="signup">
+    <h2>Inscrição com Referências</h2>
+    <p>Preencha o formulário para participar do sistema de reservas.</p>
+
+    <form id="form-inscricao">
+        <label>Nome completo:</label>
+        <input type="text" required>
+
+        <label>Telefone / WhatsApp:</label>
+        <input type="text" required>
+
+        <label>Cidade / Bairro:</label>
+        <input type="text" required>
+
+        <label>Referência 1 (nome + telefone + relação):</label>
+        <textarea required></textarea>
+
+        <label>Referência 2 (nome + telefone + relação):</label>
+        <textarea required></textarea>
+
+        <label>Documento (upload opcional):</label>
+        <input type="file" accept="image/*,.pdf">
+
+        <label>Escolha da máquina:</label>
+        <select required>
+            <option>Pequena (500 g)</option>
+            <option>Média (1 kg)</option>
+            <option>Grande (1,5–1,9 L)</option>
+        </select>
+
+        <button type="submit" class="button">Enviar inscrição</button>
+    </form>
+</section>
+
+<section id="calendar-section">
+    <h2>Calendário de Reservas</h2>
+    <p>Selecione as datas desejadas.</p>
+
+    <div id="calendar"></div>
+
+    <a class="button" id="sendReservation" href="#">Solicitar Reserva</a>
+</section>
+
+<script>
+// ========== CALENDÁRIO INTERATIVO ==========
+const calendar = document.getElementById("calendar");
+const selectedDays = new Set();
+
+for (let i = 1; i <= 30; i++) {
+    const day = document.createElement("div");
+    day.classList.add("day");
+    day.textContent = i;
+
+    // Exemplo de dias reservados
+    if ([5, 12, 19].includes(i)) {
+        day.classList.add("reserved");
+    }
+
+    day.onclick = () => {
+        if (day.classList.contains("reserved")) return;
+
+        if (selectedDays.has(i)) {
+            selectedDays.delete(i);
+            day.classList.remove("selected");
+        } else {
+            selectedDays.add(i);
+            day.classList.add("selected");
+        }
+    };
+
+    calendar.appendChild(day);
+}
+
+document.getElementById("sendReservation").onclick = () => {
+    if (selectedDays.size === 0) {
+        alert("Por favor selecione datas.");
+        return false;
+    }
+    alert("Reserva enviada para as datas: " + Array.from(selectedDays).join(", "));
+};
+</script>
+
+</body>
+</html>
